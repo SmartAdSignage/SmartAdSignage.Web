@@ -7,9 +7,6 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active" [routerLink]="['/ad-campaigns']">Ad Campaigns</a>
           </li>
           <li class="nav-item">
@@ -17,6 +14,21 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active" [routerLink]="['/advertisements']">Advertisements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/campaign-ads']">Campaign Ads</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/locations']">Locations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/iot-devices']">IoT Devices</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/queues']">Queues</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/users']">Users</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,7 +41,9 @@
           <li class="nav-item " *ngIf="isUserAuthenticated()">
             <a class="nav-link active logout" href="#" (click)="logOut()">Log out</a>
           </li>
-          
+          <li class="nav-item " *ngIf="!isUserAuthenticated()">
+            <a class="nav-link active logout" routerLink="/login">Login</a>
+          </li>
         </ul>
       </div>
     </div>

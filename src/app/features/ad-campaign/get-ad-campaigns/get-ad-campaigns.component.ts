@@ -1,15 +1,14 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { HttpParams } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { AdCampaign } from '../models/ad-campaign.model';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'app-get-ad-campaign',
-  templateUrl: './get-ad-campaign.component.html',
-  styleUrls: ['./get-ad-campaign.component.css']
+  selector: 'app-get-ad-campaigns',
+  templateUrl: './get-ad-campaigns.component.html',
+  styleUrls: ['./get-ad-campaigns.component.css']
 })
-export class GetAdCampaignComponent implements OnInit {
+export class GetAdCampaignsComponent {
   adCampaigns$?: Observable<AdCampaign[]>;
 
   constructor(private http: HttpClient) { }
@@ -24,5 +23,4 @@ export class GetAdCampaignComponent implements OnInit {
     error: (err: HttpErrorResponse) => console.log(err)
   });
   }
-
 }

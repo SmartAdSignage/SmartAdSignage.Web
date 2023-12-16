@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="mt-3">Ad Campaign List</h1>
+
+    <div class="d-flex justify-content-end mt-3">
+        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Ad Campaign</a>    
+    </div>
+
+    <ng-container *ngIf="queues$ | async as queues">
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Display Order</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let queue of queues">
+                        <td>{{queue.id}}</td>
+                        <td>{{queue.displayOrder}}</td>
+                        <td>
+                            <a class="btn btn-light" [routerLink]="['/admin/categories/', queue.id]">Edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+</div>

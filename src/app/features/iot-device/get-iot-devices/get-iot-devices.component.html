@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="mt-3">Ad Campaign List</h1>
+
+    <div class="d-flex justify-content-end mt-3">
+        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Ad Campaign</a>    
+    </div>
+
+    <ng-container *ngIf="iotDevices$ | async as iotDevices">
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let iotDevice of iotDevices">
+                        <td>{{iotDevice.id}}</td>
+                        <td>{{iotDevice.name}}</td>
+                        <td>{{iotDevice.status}}</td>
+                        <td>
+                            <a class="btn btn-light" [routerLink]="['/admin/categories/', iotDevice.id]">Edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+</div>
