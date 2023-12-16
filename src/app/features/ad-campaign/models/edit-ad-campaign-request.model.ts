@@ -1,8 +1,7 @@
-export interface AdCampaign { 
-    id: number;
+export interface UpdateAdCampaignRequest {
     startDate: Date;
     endDate: Date;
-    status: string;
     targetedViews: number;
+    status: string;
     userId: string;
 }

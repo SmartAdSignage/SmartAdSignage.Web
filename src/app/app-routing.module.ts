@@ -11,6 +11,8 @@ import { GetLocationComponent } from './features/location/get-location/get-locat
 import { GetAdCampaignsComponent } from './features/ad-campaign/get-ad-campaigns/get-ad-campaigns.component';
 import { GetIotDevicesComponent } from './features/iot-device/get-iot-devices/get-iot-devices.component';
 import { GetQueuesComponent } from './features/queues/get-queues/get-queues.component';
+import { AddAdCampaignComponent } from './features/ad-campaign/add-ad-campaign/add-ad-campaign.component';
+import { EditAdCampaignComponent } from './features/ad-campaign/edit-ad-campaign/edit-ad-campaign.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'locations', component: GetLocationComponent, canActivate: [AuthGuard]},
   { path: 'iot-devices', component: GetIotDevicesComponent, canActivate: [AuthGuard]},
   { path: 'queues', component: GetQueuesComponent, canActivate: [AuthGuard]},
+  { path: 'add-ad-campaign', component: AddAdCampaignComponent, canActivate: [AuthGuard]},
+  { path: 'edit-ad-campaign/:id', component: EditAdCampaignComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -16,7 +16,7 @@ export class GetAdCampaignsComponent {
   ngOnInit(): void {
     var queryParams = new HttpParams();
     queryParams = queryParams.append("pageInfo.number", 1);
-    queryParams = queryParams.append("pageInfo.size", 5);
+    queryParams = queryParams.append("pageInfo.size", 10);
     this.adCampaigns$ = this.http.get<AdCampaign[]>("http://localhost:5001/api/AdCampaign/ad-campaigns", {params: queryParams});
     this.adCampaigns$.subscribe({
     next: (result: any) => this.adCampaigns$ = of(result),

@@ -2,7 +2,7 @@
     <h1 class="mt-3">Ad Campaign List</h1>
 
     <div class="d-flex justify-content-end mt-3">
-        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Ad Campaign</a>    
+        <a [routerLink]="['/add-ad-campaign']" class="btn btn-primary">Add Ad Campaign</a>    
     </div>
 
     <ng-container *ngIf="adCampaigns$ | async as adCampaigns">
@@ -25,7 +25,7 @@
                         <td>{{adCampaign.status}}</td>
                         <td>{{adCampaign.targetedViews}}</td>
                         <td>
-                            <a class="btn btn-light" [routerLink]="['/admin/categories/', adCampaign.id]">Edit</a>
+                            <a class="btn btn-light" [routerLink]="['/edit-ad-campaign', adCampaign.id]">Edit</a>
                         </td>
                     </tr>
                 </tbody>

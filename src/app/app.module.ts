@@ -17,6 +17,8 @@ import { GetLocationComponent } from './features/location/get-location/get-locat
 import { GetIotDevicesComponent } from './features/iot-device/get-iot-devices/get-iot-devices.component';
 import { GetAdCampaignsComponent } from './features/ad-campaign/get-ad-campaigns/get-ad-campaigns.component';
 import { GetQueuesComponent } from './features/queues/get-queues/get-queues.component';
+import { AddAdCampaignComponent } from './features/ad-campaign/add-ad-campaign/add-ad-campaign.component';
+import { EditAdCampaignComponent } from './features/ad-campaign/edit-ad-campaign/edit-ad-campaign.component';
 
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
@@ -35,7 +37,9 @@ export function tokenGetter() {
     GetLocationComponent,
     GetIotDevicesComponent,
     GetAdCampaignsComponent,
-    GetQueuesComponent
+    GetQueuesComponent,
+    AddAdCampaignComponent,
+    EditAdCampaignComponent
   ],
   imports: [
     BrowserModule,
