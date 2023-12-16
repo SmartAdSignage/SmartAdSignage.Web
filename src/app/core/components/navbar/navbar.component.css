@@ -1,0 +1,5 @@
+.logout-item {
+    display: flex;
+    list-style-type: none;
+    /* Other styles for the list */
+  }

@@ -1,0 +1,32 @@
+<div class="container">
+    <h1 class="mt-3">Advertisement List</h1>
+
+    <div class="d-flex justify-content-end mt-3">
+        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Advertisement</a>    
+    </div>
+
+    <ng-container *ngIf="advertisements$ | async as advertisements">
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>File</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let advertisement of advertisements">
+                        <td>{{advertisement.id}}</td>
+                        <td>{{advertisement.title}}</td>
+                        <td>{{advertisement.type}}</td>
+                        <td><img src="{{advertisement.file}}"/></td>
+                        <td>
+                            <a class="btn btn-light" [routerLink]="['/admin/categories/', advertisement.id]">Edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+</div>

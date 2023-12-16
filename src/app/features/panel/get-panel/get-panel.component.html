@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 class="mt-3">Panel List</h1>
+
+    <div class="d-flex justify-content-end mt-3">
+        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Panel</a>    
+    </div>
+
+    <ng-container *ngIf="panels$ | async as panels">
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Height</th>
+                        <th>Width</th>
+                        <th>Brightness</th>
+                        <th>Status</th>
+                        <th>Longitude</th>
+                        <th>Latitude</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let panel of panels">
+                        <td>{{panel.id}}</td>
+                        <td>{{panel.height}}</td>
+                        <td>{{panel.width}}</td>
+                        <td>{{panel.brightness}}</td>
+                        <td>{{panel.status}}</td>
+                        <td>{{panel.longitude}}</td>
+                        <td>{{panel.latitude}}</td>
+                        <td>
+                            <a class="btn btn-light" [routerLink]="['/admin/categories/', panel.id]">Edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+</div>
