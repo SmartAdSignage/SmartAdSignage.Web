@@ -1,8 +1,8 @@
 <div class="container">
-    <h1 class="mt-3">location List</h1>
+    <h1 class="mt-3">Location List</h1>
 
     <div class="d-flex justify-content-end mt-3">
-        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add location</a>    
+        <a [routerLink]="['/add-location']" class="btn btn-primary">Add location</a>    
     </div>
 
     <ng-container *ngIf="locations$ | async as locations">
@@ -25,8 +25,10 @@
                         <td>{{location.city}}</td>
                         <td>{{location.streetType}}</td>
                         <td>{{location.street}}</td>
+                        <td>{{location.buildingNumber}}</td>
                         <td>
-                            <a class="btn btn-light" [routerLink]="['/admin/categories/', location.id]">Edit</a>
+                            <a class="btn btn-warning" [routerLink]="['/edit-location', location.id]">Edit</a>
+                            <button type="button" class="btn btn-danger ms-3" (click)="onDelete(location.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>

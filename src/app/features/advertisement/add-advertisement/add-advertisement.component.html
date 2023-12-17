@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 class="mt-3">Add Advertisement</h1>
+    <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+        <div class="mt-2 mb-5">
+
+            <div class="mt-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" id="title" class="form-control" name="title" value="model.title" [(ngModel)]="model.title">
+            </div>
+
+            <div class="mt-3">
+                <label for="type" class="form-label">Type</label>
+                <input type="text" id="type" name="type" class="form-control" [(ngModel)]="model.type"> 
+            </div>
+
+            <div class="mt-3">
+                <label for="file" class="form-label">File</label>
+                <ng-container *ngIf="model.file !==''">
+                    <div>
+                        <img [src]="'assets/images/' + model.file.split('\\').pop()" alt="Featured Image" style="height: 200px;" class="my-2">
+                    </div>
+                </ng-container>
+                <input type="text" id="file" name="file" class="form-control" [(ngModel)]="model.file"> 
+            </div>
+
+            <div class="mt-3">
+                <label for="user" class="form-label">User</label>
+                <ng-container *ngIf="users$ | async as users">
+                    <select id="user" name="user" class="form-select" [(ngModel)]="model.userId">
+                        <option *ngFor="let user of users" [value]="user.id">{{user.email}}</option>
+                    </select>
+                </ng-container> 
+            </div>
+
+            <div class="mt-3">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

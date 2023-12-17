@@ -2,7 +2,7 @@
     <h1 class="mt-3">Advertisement List</h1>
 
     <div class="d-flex justify-content-end mt-3">
-        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Advertisement</a>    
+        <a [routerLink]="['/add-advertisement']" class="btn btn-primary">Add Advertisement</a>    
     </div>
 
     <ng-container *ngIf="advertisements$ | async as advertisements">
@@ -13,6 +13,7 @@
                         <th>Title</th>
                         <th>Type</th>
                         <th>File</th>
+                        <th>User Id</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -21,9 +22,11 @@
                         <td>{{advertisement.id}}</td>
                         <td>{{advertisement.title}}</td>
                         <td>{{advertisement.type}}</td>
-                        <td><img src="{{advertisement.file}}"/></td>
+                        <td><img src="{{advertisement.file}}" width="400"/></td>
+                        <td>{{advertisement.userId}}</td>
                         <td>
-                            <a class="btn btn-light" [routerLink]="['/admin/categories/', advertisement.id]">Edit</a>
+                            <a class="btn btn-warning" [routerLink]="['/edit-advertisement', advertisement.id]">Edit</a>
+                            <button type="button" class="btn btn-danger ms-3" (click)="onDelete(advertisement.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>

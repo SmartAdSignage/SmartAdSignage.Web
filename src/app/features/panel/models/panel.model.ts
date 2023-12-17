@@ -6,4 +6,6 @@ export interface Panel {
     status : string;
     latitude : number;
     longitude : number;
+    userId : string;
+    locationId : number;
 }

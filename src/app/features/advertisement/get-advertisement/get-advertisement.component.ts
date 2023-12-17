@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable, Subscription, catchError, map, of } from 'rxjs';
 import { Advertisement } from '../models/advertisement.model';
 
 @Component({
@@ -11,6 +11,8 @@ import { Advertisement } from '../models/advertisement.model';
 export class GetAdvertisementComponent {
   advertisements$?: Observable<Advertisement[]>;
   blobUrls: string[] = [];
+
+  deleteAdvertisementSubscription?: Subscription;
   constructor(private http: HttpClient) {
 
   }
@@ -18,12 +20,13 @@ export class GetAdvertisementComponent {
   ngOnInit(): void {
     var queryParams = new HttpParams();
     queryParams = queryParams.append("pageInfo.number", 1);
-    queryParams = queryParams.append("pageInfo.size", 5);
+    queryParams = queryParams.append("pageInfo.size", 10);
     this.advertisements$ = this.http.get<Advertisement[]>('http://localhost:5001/api/Advertisement/advertisements', { params: queryParams })
       .pipe(
         map((response: any) => {
           // Convert byte[] to Blob for each Advertisement in the response
           return response.map((ad: any) => {
+            const userId = ad.user?.id;
             const blob = this.convertByteArrayToBlob(ad.file);
             const blobUrl = URL.createObjectURL(blob);
             this.blobUrls.push(blobUrl);
@@ -32,7 +35,8 @@ export class GetAdvertisementComponent {
               id: ad.id,
               title: ad.title,
               type: ad.type,
-              file: blobUrl
+              file: blobUrl,
+              userId: userId
             } as any;
           });
         })
@@ -58,8 +62,16 @@ base64ToArrayBuffer(base64: any): ArrayBuffer {
   }
   return bytes.buffer;
 }
+onDelete(id: number): void {
+  this.deleteAdvertisementSubscription = this.http.delete(`http://localhost:5001/api/Advertisement/advertisement/${id}`).subscribe({
+    next: (response) => {
+      this.ngOnInit();
+    }
+  });
+}
 ngOnDestroy(): void {
   // Revoke all Blob URLs when the component is destroyed
   this.blobUrls.forEach(url => URL.revokeObjectURL(url));
+  this.deleteAdvertisementSubscription?.unsubscribe();
 }
 }

@@ -3,4 +3,5 @@ export interface Advertisement {
     title: string;
     type: string;
     file: string;
+    userId: string;
 }

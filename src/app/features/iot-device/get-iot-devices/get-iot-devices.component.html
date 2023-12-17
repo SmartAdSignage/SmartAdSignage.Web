@@ -1,8 +1,8 @@
 <div class="container">
-    <h1 class="mt-3">Ad Campaign List</h1>
+    <h1 class="mt-3">IoT Device List</h1>
 
     <div class="d-flex justify-content-end mt-3">
-        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Ad Campaign</a>    
+        <a [routerLink]="['/add-iot-device']" class="btn btn-primary">Add IoT Device</a>    
     </div>
 
     <ng-container *ngIf="iotDevices$ | async as iotDevices">
@@ -21,7 +21,8 @@
                         <td>{{iotDevice.name}}</td>
                         <td>{{iotDevice.status}}</td>
                         <td>
-                            <a class="btn btn-light" [routerLink]="['/admin/categories/', iotDevice.id]">Edit</a>
+                            <a class="btn btn-warning" [routerLink]="['/edit-iot-device', iotDevice.id]">Edit</a>
+                            <button type="button" class="btn btn-danger ms-3" (click)="onDelete(iotDevice.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>

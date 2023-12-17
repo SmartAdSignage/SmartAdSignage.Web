@@ -19,6 +19,17 @@ import { GetAdCampaignsComponent } from './features/ad-campaign/get-ad-campaigns
 import { GetQueuesComponent } from './features/queues/get-queues/get-queues.component';
 import { AddAdCampaignComponent } from './features/ad-campaign/add-ad-campaign/add-ad-campaign.component';
 import { EditAdCampaignComponent } from './features/ad-campaign/edit-ad-campaign/edit-ad-campaign.component';
+import { GetUsersComponent } from './features/users/get-users/get-users.component';
+import { RegistrationComponent } from './features/auth/registration/registration.component';
+import { AddAdvertisementComponent } from './features/advertisement/add-advertisement/add-advertisement.component';
+import { EditAdvertisementComponent } from './features/advertisement/edit-advertisement/edit-advertisement.component';
+import { AddPanelComponent } from './features/panel/add-panel/add-panel.component';
+import { EditPanelComponent } from './features/panel/edit-panel/edit-panel.component';
+import { AddLocationComponent } from './features/location/add-location/add-location.component';
+import { EditLocationComponent } from './features/location/edit-location/edit-location.component';
+import { AddIotDeviceComponent } from './features/iot-device/add-iot-device/add-iot-device.component';
+import { EditIotDeviceComponent } from './features/iot-device/edit-iot-device/edit-iot-device.component';
+import { EditUserComponent } from './features/users/edit-user/edit-user.component';
 
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
@@ -39,7 +50,18 @@ export function tokenGetter() {
     GetAdCampaignsComponent,
     GetQueuesComponent,
     AddAdCampaignComponent,
-    EditAdCampaignComponent
+    EditAdCampaignComponent,
+    GetUsersComponent,
+    RegistrationComponent,
+    AddAdvertisementComponent,
+    EditAdvertisementComponent,
+    AddPanelComponent,
+    EditPanelComponent,
+    AddLocationComponent,
+    EditLocationComponent,
+    AddIotDeviceComponent,
+    EditIotDeviceComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

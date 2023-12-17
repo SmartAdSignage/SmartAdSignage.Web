@@ -26,8 +26,13 @@
             </div>
 
             <div class="mt-3">
-                <label for="userId" class="form-label">User Id</label>
-                <input type="text" id="userId" name="userId" class="form-control" [(ngModel)]="model!.userId"> 
+                <label for="user" class="form-label">User</label>
+                <ng-container *ngIf="users$ | async as users">
+                    <select id="user" name="user" class="form-select" 
+                    [(ngModel)]="selectedUser">
+                        <option *ngFor="let user of users" [value]="user.id">{{user.email}}</option>
+                    </select>
+                </ng-container> 
             </div>
 
             <div class="mt-3">
