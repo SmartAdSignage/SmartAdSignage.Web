@@ -3,7 +3,6 @@ import { IotDevice } from '../models/iot-device.model';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { UpdatePanelRequest } from '../../panel/models/edit-panel-request.model';
 import { Panel } from '../../panel/models/panel.model';
 import { UpdateIotDeviceRequest } from '../models/edit-iot-device-request.model';
 

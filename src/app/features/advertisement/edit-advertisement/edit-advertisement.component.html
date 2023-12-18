@@ -17,7 +17,7 @@
                 <label for="file" class="form-label">File</label>
                 <ng-container *ngIf="model!.file !==''">
                     <div>
-                        <img [src]="'assets/images/' + model!.file.split('\\').pop()" alt="Featured Image" style="height: 200px;" class="my-2">
+                        <img [src]="'assets/images/' + model!.file.split('\\').pop()" alt="Featured Advertisement" style="height: 200px;" class="my-2">
                     </div>
                 </ng-container>
                 <input type="url" id="file" name="file" class="form-control" [(ngModel)]="model!.file"> 

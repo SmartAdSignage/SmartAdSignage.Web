@@ -30,6 +30,11 @@ import { EditLocationComponent } from './features/location/edit-location/edit-lo
 import { AddIotDeviceComponent } from './features/iot-device/add-iot-device/add-iot-device.component';
 import { EditIotDeviceComponent } from './features/iot-device/edit-iot-device/edit-iot-device.component';
 import { EditUserComponent } from './features/users/edit-user/edit-user.component';
+import { AddQueueComponent } from './features/queues/add-queue/add-queue.component';
+import { EditQueueComponent } from './features/queues/edit-queue/edit-queue.component';
+import { AddCampaignAdvertisementComponent } from './features/campaign-advertisement/add-campaign-advertisement/add-campaign-advertisement.component';
+import { EditCampaignAdvertisementComponent } from './features/campaign-advertisement/edit-campaign-advertisement/edit-campaign-advertisement.component';
+import { GetFinishedAdCampaignsComponent } from './features/ad-campaign/get-finished-ad-campaigns/get-finished-ad-campaigns.component';
 
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
@@ -61,7 +66,12 @@ export function tokenGetter() {
     EditLocationComponent,
     AddIotDeviceComponent,
     EditIotDeviceComponent,
-    EditUserComponent
+    EditUserComponent,
+    AddQueueComponent,
+    EditQueueComponent,
+    AddCampaignAdvertisementComponent,
+    EditCampaignAdvertisementComponent,
+    GetFinishedAdCampaignsComponent
   ],
   imports: [
     BrowserModule,

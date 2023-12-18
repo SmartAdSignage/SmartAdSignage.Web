@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Observable, Subscription, catchError, map, of } from 'rxjs';
+import { Observable, Subscription, map, of } from 'rxjs';
 import { Advertisement } from '../models/advertisement.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { Advertisement } from '../models/advertisement.model';
   templateUrl: './get-advertisement.component.html',
   styleUrls: ['./get-advertisement.component.css']
 })
+
 export class GetAdvertisementComponent {
   advertisements$?: Observable<Advertisement[]>;
   blobUrls: string[] = [];
@@ -44,34 +45,36 @@ export class GetAdvertisementComponent {
     this.advertisements$.subscribe({
     next: (result: any) => this.advertisements$ = of(result),
     error: (err: HttpErrorResponse) => console.log(err)
-  });
+    });
   }
   
-// Function to convert byte[] to Blob
-convertByteArrayToBlob(byteArray: any): Blob {
-  const arrayBuffer = this.base64ToArrayBuffer(byteArray);
-  return new Blob([arrayBuffer], { type: 'application/octet-stream' }); // Change the type if you know the specific file type
-}
-
-// Function to convert base64 to ArrayBuffer
-base64ToArrayBuffer(base64: any): ArrayBuffer {
-  const binaryString = window.atob(base64);
-  const bytes = new Uint8Array(binaryString.length);
-  for (let i = 0; i < binaryString.length; i++) {
-    bytes[i] = binaryString.charCodeAt(i);
+  // Function to convert byte[] to Blob
+  convertByteArrayToBlob(byteArray: any): Blob {
+    const arrayBuffer = this.base64ToArrayBuffer(byteArray);
+    return new Blob([arrayBuffer], { type: 'application/octet-stream' });
   }
-  return bytes.buffer;
-}
-onDelete(id: number): void {
-  this.deleteAdvertisementSubscription = this.http.delete(`http://localhost:5001/api/Advertisement/advertisement/${id}`).subscribe({
-    next: (response) => {
-      this.ngOnInit();
+
+  // Function to convert base64 to ArrayBuffer
+  base64ToArrayBuffer(base64: any): ArrayBuffer {
+    const binaryString = window.atob(base64);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
     }
-  });
-}
-ngOnDestroy(): void {
-  // Revoke all Blob URLs when the component is destroyed
-  this.blobUrls.forEach(url => URL.revokeObjectURL(url));
-  this.deleteAdvertisementSubscription?.unsubscribe();
-}
+    return bytes.buffer;
+  }
+
+  onDelete(id: number): void {
+    this.deleteAdvertisementSubscription = this.http.delete(`http://localhost:5001/api/Advertisement/advertisement/${id}`).subscribe({
+      next: (response) => {
+        this.ngOnInit();
+      }
+    });
+  }
+  
+  ngOnDestroy(): void {
+    // Revoke all Blob URLs when the component is destroyed
+    this.blobUrls.forEach(url => URL.revokeObjectURL(url));
+    this.deleteAdvertisementSubscription?.unsubscribe();
+  }
 }

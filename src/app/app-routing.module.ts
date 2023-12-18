@@ -24,6 +24,11 @@ import { EditLocationComponent } from './features/location/edit-location/edit-lo
 import { EditIotDeviceComponent } from './features/iot-device/edit-iot-device/edit-iot-device.component';
 import { AddIotDeviceComponent } from './features/iot-device/add-iot-device/add-iot-device.component';
 import { EditUserComponent } from './features/users/edit-user/edit-user.component';
+import { AddQueueComponent } from './features/queues/add-queue/add-queue.component';
+import { AddCampaignAdvertisementComponent } from './features/campaign-advertisement/add-campaign-advertisement/add-campaign-advertisement.component';
+import { EditCampaignAdvertisementComponent } from './features/campaign-advertisement/edit-campaign-advertisement/edit-campaign-advertisement.component';
+import { EditQueueComponent } from './features/queues/edit-queue/edit-queue.component';
+import { GetFinishedAdCampaignsComponent } from './features/ad-campaign/get-finished-ad-campaigns/get-finished-ad-campaigns.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -38,7 +43,6 @@ const routes: Routes = [
   { path: 'queues', component: GetQueuesComponent, canActivate: [AuthGuard]},
   { path: 'add-ad-campaign', component: AddAdCampaignComponent, canActivate: [AuthGuard]},
   { path: 'edit-ad-campaign/:id', component: EditAdCampaignComponent, canActivate: [AuthGuard]},
-  //{ path: 'users', component: GetUsersComponent, canActivate: [AuthGuard]},
   { path: 'register', component: RegistrationComponent },
   { path: 'add-advertisement', component: AddAdvertisementComponent, canActivate: [AuthGuard]},
   { path: 'edit-advertisement/:id', component: EditAdvertisementComponent, canActivate: [AuthGuard]},
@@ -54,6 +58,11 @@ const routes: Routes = [
     { path: '', component: GetUsersComponent },
     { path: 'edit-user/:email', component: EditUserComponent }
   ]},
+  { path: 'add-queue', component: AddQueueComponent, canActivate: [AuthGuard]},
+  { path: 'edit-queue/:id', component: EditQueueComponent, canActivate: [AuthGuard]},
+  { path: 'add-campaign-advertisement', component: AddCampaignAdvertisementComponent, canActivate: [AuthGuard]},
+  { path: 'edit-campaign-advertisement/:id', component: EditCampaignAdvertisementComponent, canActivate: [AuthGuard]},
+  { path: 'get-finished-ad-campaigns', component: GetFinishedAdCampaignsComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'home' }
 ];
 

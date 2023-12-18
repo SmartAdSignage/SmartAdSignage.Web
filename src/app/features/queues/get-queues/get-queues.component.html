@@ -1,8 +1,8 @@
 <div class="container">
-    <h1 class="mt-3">Ad Campaign List</h1>
+    <h1 class="mt-3">Queue List</h1>
 
     <div class="d-flex justify-content-end mt-3">
-        <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Ad Campaign</a>    
+        <a [routerLink]="['/add-queue']" class="btn btn-primary">Add Queue</a>    
     </div>
 
     <ng-container *ngIf="queues$ | async as queues">
@@ -11,6 +11,8 @@
                     <tr>
                         <th>Id</th>
                         <th>Display Order</th>
+                        <th>Panel Id</th>
+                        <th>Advertisement Id</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -18,8 +20,11 @@
                     <tr *ngFor="let queue of queues">
                         <td>{{queue.id}}</td>
                         <td>{{queue.displayOrder}}</td>
+                        <td>{{queue.panelId}}</td>
+                        <td>{{queue.advertisementId}}</td>
                         <td>
-                            <a class="btn btn-warning" [routerLink]="['/admin/categories/', queue.id]">Edit</a>
+                            <a class="btn btn-warning" [routerLink]="['/edit-queue', queue.id]">Edit</a>
+                            <button type="button" class="btn btn-danger ms-3" (click)="onDelete(queue.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>

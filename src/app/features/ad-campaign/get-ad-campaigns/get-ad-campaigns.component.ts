@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdCampaign } from '../models/ad-campaign.model';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subscription, map, of } from 'rxjs';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './get-ad-campaigns.component.html',
   styleUrls: ['./get-ad-campaigns.component.css']
 })
-export class GetAdCampaignsComponent {
+export class GetAdCampaignsComponent implements OnInit{
   adCampaigns$?: Observable<AdCampaign[]>;
   deleteAdCampaignSubscription?: Subscription;
 

@@ -1,5 +1,4 @@
-export interface Queue {
-    id: number;
+export interface UpdateQueueRequest {
     displayOrder: number;
     advertisementId: number;
     panelId: number;

@@ -12,6 +12,7 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Status</th>
+                        <th>Panel Id</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -20,6 +21,7 @@
                         <td>{{iotDevice.id}}</td>
                         <td>{{iotDevice.name}}</td>
                         <td>{{iotDevice.status}}</td>
+                        <td>{{iotDevice.panelId}}</td>
                         <td>
                             <a class="btn btn-warning" [routerLink]="['/edit-iot-device', iotDevice.id]">Edit</a>
                             <button type="button" class="btn btn-danger ms-3" (click)="onDelete(iotDevice.id)">Delete</button>

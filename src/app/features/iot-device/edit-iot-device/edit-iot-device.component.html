@@ -14,9 +14,9 @@
             </div>
 
             <div class="mt-3">
-                <label for="user" class="form-label">Panel</label>
+                <label for="panel" class="form-label">Panel</label>
                 <ng-container *ngIf="panels$ | async as panels">
-                    <select id="user" name="user" class="form-select" [(ngModel)]="selectedPanel">
+                    <select id="panel" name="panel" class="form-select" [(ngModel)]="selectedPanel">
                         <option *ngFor="let panel of panels" [value]="panel.id">{{panel.id}}</option>
                     </select>
                 </ng-container> 

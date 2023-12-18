@@ -1,5 +1,4 @@
-export interface CampaignAd { 
-    id: number;
+export interface UpdateCampaignAdvertisementRequest {
     views: number;
     displayedTimes: number;
     adCampaignId: number;

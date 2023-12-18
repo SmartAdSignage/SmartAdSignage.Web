@@ -9,6 +9,7 @@ export class AuthGuard implements CanActivate  {
 
   constructor(private router:Router, private jwtHelper: JwtHelperService){}
   
+  // Check if user is logged in
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const token = localStorage.getItem("jwt");
 
@@ -18,5 +19,15 @@ export class AuthGuard implements CanActivate  {
 
     this.router.navigate(["login"]);
     return false;
+  }
+
+  // Get username from access token
+  getNameFromToken(): string {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      var username = this.jwtHelper.decodeToken(token)['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+      return username;
+    }
+    return "";
   }
 }
